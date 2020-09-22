@@ -4,7 +4,7 @@ defmodule JogoDaVelhaWeb.GameLive do
   def mount(_params, _session, socket) do
     socket =
       assign(socket,
-        round: 1,
+        game_round: 1,
         player: 1,
         winner: false,
         grids: Map.new(1..9, fn key -> {key, nil} end)
@@ -42,21 +42,50 @@ defmodule JogoDaVelhaWeb.GameLive do
   end
 
   def handle_event("add-value", %{"index" => index}, socket) do
-    %{assigns: %{player: player, grids: grids, round: round}} = socket
+    %{assigns: %{player: player, grids: grids, game_round: game_round}} = socket
 
     parsedIndex = String.to_integer(index)
 
     grids = Map.update!(grids, parsedIndex, fn _ -> player - 1 end)
 
-    socket =
-      assign(socket,
-        grids: grids,
-        player: change_player(player),
-        winner: validate(grids),
-        round: round + 1
-      )
+    winner = validate(grids)
 
-    {:noreply, socket}
+    cond do
+      !winner && game_round == 9 ->
+        socket =
+          socket
+          |> assign(
+            grids: grids,
+            winner: false
+          )
+          |> put_flash(:info, "Nenhum jogador ganhou!")
+
+        {:noreply, socket}
+
+      winner ->
+        socket =
+          socket
+          |> assign(
+            grids: grids,
+            winner: winner,
+            game_round: game_round + 1
+          )
+          |> put_flash(:info, "Jogador #{player} ganhou!")
+
+        {:noreply, socket}
+
+      !winner ->
+        socket =
+          assign(
+            socket,
+            grids: grids,
+            player: change_player(player),
+            winner: winner,
+            game_round: game_round + 1
+          )
+
+        {:noreply, socket}
+    end
   end
 
   defp change_player(player) do
