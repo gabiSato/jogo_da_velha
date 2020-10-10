@@ -10,6 +10,8 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  background: #aa00ff;
+  color: #fff;
 }
 
 .game-container {
@@ -29,6 +31,7 @@ body {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  background: #fff;
 }
 
 .game-container div img {

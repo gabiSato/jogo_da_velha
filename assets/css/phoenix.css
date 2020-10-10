@@ -17,12 +17,12 @@ html {
 }
 body {
   color: #000000;
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.6em;
   font-weight: 300;
   line-height: 1.6;
 }
-blockquote {
+/* blockquote {
   border-left: 0.3rem solid #d1d1d1;
   margin-left: 0;
   margin-right: 0;
@@ -558,6 +558,7 @@ pre {
 select {
   width: auto;
 }
+*/
 
 /* Phoenix promo and logo */
 .phx-hero {

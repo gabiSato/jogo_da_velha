@@ -17,7 +17,8 @@ defmodule JogoDaVelhaWeb.Router do
   scope "/", JogoDaVelhaWeb do
     pipe_through :browser
 
-    live "/", GameLive, :index
+    live "/", LandingLive
+    live "/game", GameLive
   end
 
   # Other scopes may use custom stacks.

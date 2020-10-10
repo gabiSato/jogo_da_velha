@@ -1,0 +1,36 @@
+#landing {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #aa00ff;
+}
+
+.landing-title {
+  color: #fff;
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+
+.landing-button {
+  border: 0;
+  padding: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #00e676;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 0.1s opacity ease-in-out;
+}
+
+.landing-button:focus {
+  outline: 0;
+}
+
+.landing-button:hover {
+  opacity: 0.96;
+}

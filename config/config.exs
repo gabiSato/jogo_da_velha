@@ -12,7 +12,7 @@ config :jogo_da_velha, JogoDaVelhaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "npu3FJJwyMlQzdvH8JpvTIj6mjKOeJVuk0uq5V3uX0afGyowlzLHD7I/HK5XfLsW",
   render_errors: [view: JogoDaVelhaWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: JogoDaVelha.PubSub,
+  pubsub: [name: JogoDaVelha.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "vx05wdh4"]
 
 # Configures Elixir's Logger
